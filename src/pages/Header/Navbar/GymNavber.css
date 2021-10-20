@@ -1,0 +1,6 @@
+.logo{
+    width: 50px;
+}
+.selected{
+    border-bottom: 2px solid #fff;
+}

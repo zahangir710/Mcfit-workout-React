@@ -1,10 +1,14 @@
 import React from "react";
+import Banner from "../Header/Banner/Banner";
+import useFirebase from "../../Hooks/useFirebase";
 
 const Home = () => {
+  const { user } = useFirebase();
   return (
-    <div>
-      <h1>This is Home</h1>
-    </div>
+    <>
+      <Banner></Banner>
+      <h1>{user.email}</h1>
+    </>
   );
 };
 

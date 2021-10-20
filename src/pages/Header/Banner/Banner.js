@@ -1,21 +1,26 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Membership.css";
-
-const Membership = () => {
+import "./Banner.css";
+const Banner = () => {
   return (
-    <div className="membership-banner">
+    <div className="banner">
       <div className="container text-center banner-text">
-        <h3 className="header-font mb-5">Train how, when and where you want</h3>
-        <h5 className="fw-bold">From only 19.90 € *</h5>
-        <Link to="/login">
+        <h1 className="header-font mb-5">
+          MORE
+          <br />
+          FLEXIBILITY
+        </h1>
+        <h5 className="fw-bold">
+          The McFIT Flex tariffs, can now be cancelled on a monthly basis!
+        </h5>
+        <Link to="/membership">
           <Button
             variant="primary"
             size="lg"
             className="bg-warning mt-5 w-25 p-2 rounded fs-4 fw-bold text-light"
           >
-            Register Now
+            Learn More
           </Button>{" "}
         </Link>
       </div>
@@ -23,4 +28,4 @@ const Membership = () => {
   );
 };
 
-export default Membership;
+export default Banner;

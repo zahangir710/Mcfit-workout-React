@@ -13,6 +13,8 @@ import Login from "./pages/Login/Login";
 import Registration from "./pages/Registration/Registration";
 import AuthProvider from "./Context/AuthProvider";
 import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
+import CourseDetails from "./pages/CoursesOffered/CourseDetails/CourseDetails";
+import Footer from "./pages/Footer/Footer";
 
 function App() {
   return (
@@ -35,22 +37,25 @@ function App() {
           <PrivateRoute path="/trailtraining">
             <TrailTraining></TrailTraining>
           </PrivateRoute>
-          <Route path="/helpandsupport">
+          <PrivateRoute path="/helpandsupport">
             <HelpAndSupport></HelpAndSupport>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login></Login>
           </Route>
           <Route path="/registration">
             <Registration></Registration>
           </Route>
+          <PrivateRoute path="/coursedetails/:courseId">
+            <CourseDetails></CourseDetails>
+          </PrivateRoute>
           <Route path="*">
             <NotFound></NotFound>
           </Route>
         </Switch>
+        <Footer></Footer>
       </Router>
     </AuthProvider>
   );
 }
-
 export default App;

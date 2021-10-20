@@ -1,12 +1,11 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Link, Redirect } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const { googleSignIn, loginWithEmail } = useAuth();
+  const { googleSignIn, loginWithEmail, user } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,11 +17,15 @@ const Login = () => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
+
     loginWithEmail(email, password);
   };
   const handleGoogleLogin = () => {
     googleSignIn();
   };
+  if (user.email) {
+    return <Redirect to="/home" />;
+  }
   return (
     <Container className="my-5">
       <Row className="d-flex justify-content-center">
@@ -59,7 +62,7 @@ const Login = () => {
             <Button
               variant="primary"
               type="submit"
-              className="bg-warning w-25 p-1 mt-4 mb-3"
+              className="bg-warning w-25 p-1 mt-4 mb-3 border-0"
             >
               Login
             </Button>

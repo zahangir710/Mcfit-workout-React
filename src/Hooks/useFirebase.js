@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 authInitialize();
@@ -71,6 +72,15 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+  const updateName = (firstName, lastName) => {
+    updateProfile(auth.currentUser, {
+      displayName: `${firstName} ${lastName}`,
+    })
+      .then(() => {})
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return {
     googleSignIn,
     signUpwithEmail,
@@ -79,6 +89,7 @@ const useFirebase = () => {
     user,
     error,
     isLoading,
+    updateName,
   };
 };
 export default useFirebase;

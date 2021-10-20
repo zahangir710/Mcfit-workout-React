@@ -18,7 +18,7 @@ const Banner = () => {
           <Button
             variant="primary"
             size="lg"
-            className="bg-warning mt-5 w-25 p-2 rounded fs-4 fw-bold text-light"
+            className="bg-warning mt-5 w-25 p-2 fs-3 rounded fw-bold text-light"
           >
             Learn More
           </Button>{" "}

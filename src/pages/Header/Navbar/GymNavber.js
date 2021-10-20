@@ -8,6 +8,7 @@ import "./GymNavber.css";
 
 const Navber = () => {
   const { user, logOut } = useFirebase();
+  console.log(user);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
@@ -33,7 +34,12 @@ const Navber = () => {
           </Nav>
           <Nav>
             {user.email ? (
-              <Nav.Link onClick={logOut} className="text-light" as={Link} to="">
+              <Nav.Link
+                onClick={logOut}
+                className="text-warning"
+                as={Link}
+                to=""
+              >
                 Logout
               </Nav.Link>
             ) : (
@@ -48,7 +54,7 @@ const Navber = () => {
               <div className="mt-1">
                 <FaUserCircle className="icon" />
                 <small className="user-name ms-3 mt-2">
-                  {user?.displayName}
+                  Welcome : {user?.displayName}
                 </small>
               </div>
             )}

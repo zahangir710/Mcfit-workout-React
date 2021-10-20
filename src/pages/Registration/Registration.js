@@ -1,22 +1,27 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import useFirebase from "../../Hooks/useFirebase";
 
 const Registration = () => {
   const { signUpwithEmail, googleSignIn, user } = useAuth();
+  // const {updateName}=useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstname, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [error, setError] = useState("");
+  // update user name from registration form
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  };
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+
+  // const handleFirstName = (e) => {
+  //   setFirstName(e.target.value);
+  // };
+  // const handleLastName = (e) => {
+  //   setLastName(e.target.value);
+  // };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -27,10 +32,17 @@ const Registration = () => {
     googleSignIn();
   };
   const handleRegistration = (e) => {
+    setError("");
     e.preventDefault();
+    if (password.length < 6) {
+      return setError("Password must contain at least 6 characters!!!");
+    }
     signUpwithEmail(email, password);
-    user["displayName"] = { lastName };
+    // updateName(firstName, lastName);
   };
+  if (user.email) {
+    return <Redirect to="/home" />;
+  }
   return (
     <Container className="my-5">
       <Row className="d-flex justify-content-center">
@@ -43,14 +55,14 @@ const Registration = () => {
                   <Col>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
-                      onBlur={handleFirstName}
+                      // onBlur={handleFirstName}
                       placeholder="First name"
                     />
                   </Col>
                   <Col>
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control
-                      onBlur={handleLastName}
+                      // onBlur={handleLastName}
                       placeholder="Last name"
                     />
                   </Col>
@@ -101,7 +113,14 @@ const Registration = () => {
                 <Form.Control />
               </Form.Group>
             </Row>
-
+            <p className="text-danger">{error}</p>
+            <small>Already Registered?</small>
+            <Link to="/login">
+              <small className="text-primary ms-2 hover-text">
+                <u>Login here</u>
+              </small>
+            </Link>
+            <br />
             <Button
               variant="primary"
               type="submit"

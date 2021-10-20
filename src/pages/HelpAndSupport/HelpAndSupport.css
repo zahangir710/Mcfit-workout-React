@@ -1,0 +1,11 @@
+.help-banner{
+    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url(../../Images/trainer.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.help-banner-text{
+    color: #fff;
+    padding: 200px 0;
+}

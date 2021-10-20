@@ -1,6 +1,12 @@
 .logo{
     width: 50px;
 }
-.selected{
-    border-bottom: 2px solid #fff;
+.icon{
+    color: #fff;
+    margin-left: 10px;
+    font-size: 30px;
+}
+.user-name{
+    color: #fff;
+    line-height: 30px;
 }

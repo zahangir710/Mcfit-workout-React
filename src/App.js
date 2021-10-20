@@ -11,10 +11,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Registration/Registration";
+import AuthProvider from "./Context/AuthProvider";
+import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
-    <div>
+    <AuthProvider>
       <Router>
         <GymNavber></GymNavber>
         <Switch>
@@ -30,9 +32,9 @@ function App() {
           <Route path="/courses">
             <Courses></Courses>
           </Route>
-          <Route path="/trailtraining">
+          <PrivateRoute path="/trailtraining">
             <TrailTraining></TrailTraining>
-          </Route>
+          </PrivateRoute>
           <Route path="/helpandsupport">
             <HelpAndSupport></HelpAndSupport>
           </Route>
@@ -47,7 +49,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </AuthProvider>
   );
 }
 

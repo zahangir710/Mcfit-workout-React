@@ -1,12 +1,22 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import useAuth from "../../Hooks/useAuth";
 import useFirebase from "../../Hooks/useFirebase";
+
 const Registration = () => {
-  const { signUpwithEmail, googleSignIn } = useFirebase();
+  const { signUpwithEmail, googleSignIn, user } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const handleLastName = (e) => {
+    setLastName(e.target.value);
+  };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -19,6 +29,7 @@ const Registration = () => {
   const handleRegistration = (e) => {
     e.preventDefault();
     signUpwithEmail(email, password);
+    user["displayName"] = { lastName };
   };
   return (
     <Container className="my-5">
@@ -31,11 +42,17 @@ const Registration = () => {
                 <Row>
                   <Col>
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control placeholder="First name" />
+                    <Form.Control
+                      onBlur={handleFirstName}
+                      placeholder="First name"
+                    />
                   </Col>
                   <Col>
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control placeholder="Last name" />
+                    <Form.Control
+                      onBlur={handleLastName}
+                      placeholder="Last name"
+                    />
                   </Col>
                 </Row>
               </Form>

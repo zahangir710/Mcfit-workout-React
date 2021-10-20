@@ -1,9 +1,10 @@
 import React from "react";
 import Banner from "../Header/Banner/Banner";
-import useFirebase from "../../Hooks/useFirebase";
+
+import useAuth from "../../Hooks/useAuth";
 
 const Home = () => {
-  const { user } = useFirebase();
+  const { user } = useAuth();
   return (
     <>
       <Banner></Banner>

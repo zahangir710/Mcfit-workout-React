@@ -2,11 +2,11 @@ import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useFirebase from "../../Hooks/useFirebase";
+import useAuth from "../../Hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const { googleSignIn, loginWithEmail } = useFirebase();
+  const { googleSignIn, loginWithEmail } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

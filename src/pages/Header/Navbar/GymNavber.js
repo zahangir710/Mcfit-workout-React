@@ -1,3 +1,4 @@
+import { FaUserCircle } from "react-icons/fa";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -40,17 +41,17 @@ const Navber = () => {
                 Login
               </Nav.Link>
             )}
-            <Nav.Link
-              eventKey={2}
-              as={Link}
-              to="/helpandsupport"
-              activeClassName="selected"
-            >
+            <Nav.Link eventKey={2} as={Link} to="/helpandsupport">
               Help and Support
             </Nav.Link>
-            <Nav.Link className="text-light" as={Link} to="/">
-              {user.email}
-            </Nav.Link>
+            {user?.email && (
+              <div className="mt-1">
+                <FaUserCircle className="icon" />
+                <small className="user-name ms-3 mt-2">
+                  {user?.displayName}
+                </small>
+              </div>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
